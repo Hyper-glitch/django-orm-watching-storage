@@ -1,13 +1,17 @@
 import os
 
+from dotenv import load_dotenv
+
+load_dotenv()
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'HOST': '',
-        'PORT': '',
-        'NAME': '',
-        'USER': '',
-        'PASSWORD': '',
+        'HOST': os.environ.get("DB_HOST"),
+        'PORT': os.environ.get("DB_PORT"),
+        'NAME': os.environ.get("DB_NAME"),
+        'USER': os.environ.get("DB_USERNAME"),
+        'PASSWORD': os.environ.get("DB_PASSWORD"),
     }
 }
 
@@ -21,7 +25,6 @@ ROOT_URLCONF = 'project.urls'
 
 ALLOWED_HOSTS = ['*']
 
-
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 TEMPLATES = [
     {
@@ -30,7 +33,6 @@ TEMPLATES = [
         'APP_DIRS': True,
     },
 ]
-
 
 USE_L10N = True
 
