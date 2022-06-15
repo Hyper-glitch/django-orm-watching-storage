@@ -1,8 +1,11 @@
 from django.utils.timezone import localtime
 
 
-def get_duration(entered_at):
-    duration = localtime() - entered_at
+def get_duration(visit):
+    if visit.leaved_at:
+        duration = visit.leaved_at - visit.entered_at
+    else:
+        duration = localtime() - visit.entered_at
     return duration
 
 
