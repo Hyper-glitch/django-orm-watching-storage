@@ -12,10 +12,11 @@ def storage_information_view(request):
         visits = Visit.objects.filter(passcard=passcard)
         for visit in visits:
             if not visit.leaved_at:
+                duration = visit.get_duration()
                 non_closed_visit = {
                     'who_entered': visit.passcard.owner_name,
                     'entered_at': visit.entered_at,
-                    'duration': visit.format_duration(),
+                    'duration': visit.format_duration(duration=duration),
                 }
                 non_closed_visits.append(non_closed_visit)
 
