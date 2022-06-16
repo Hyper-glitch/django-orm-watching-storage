@@ -44,8 +44,8 @@ class Visit(models.Model):
             return True
         return False
 
-    def format_duration(self):
-        duration = self.get_duration()
+    @staticmethod
+    def format_duration(duration):
         seconds = duration.total_seconds()
         hours = seconds // 3600
         minutes = seconds % 3600 // 60
